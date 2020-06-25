@@ -22,6 +22,20 @@ $(document).on("keydown", function() {
 
   }
 });
+// only when not started yet
+$("button").on("click", function() {
+  if (!gameStarted) {
+    gameStarted = true;
+    $("h1").text("Level " + level);
+
+    //start a bit delayed
+    setTimeout(function() {
+      gameRound();
+    }, 300);
+
+  }
+  $("button").hide();
+});
 
 
 
@@ -58,6 +72,7 @@ function checkAnswer(currentLevel) {
       $("body").addClass("game-over");
       setTimeout(function() {
         $("body").removeClass("game-over");
+        $("button").show();
       }, 200);
     }, 300);
     //restart game
